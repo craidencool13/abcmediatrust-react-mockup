@@ -1,14 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { store } from './app/store';
 import { Provider } from 'react-redux';
+
+import App from './App';
+import { initRedux } from './store'
 import * as serviceWorker from './serviceWorker';
+import {CommonModal, CommonToast} from './components'
+
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const store = initRedux();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider {...{store}}>
+
+      {/* MODAL */}
+      <CommonModal />
+
+      {/* TOAST */}
+      <CommonToast />
+      
       <App />
     </Provider>
   </React.StrictMode>,
